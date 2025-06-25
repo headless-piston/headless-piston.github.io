@@ -1141,6 +1141,7 @@ pre .javascript .function {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
+  border-radius: 50%;
 }
 .site-author-name {
   color: var(--text-color);
@@ -1165,10 +1166,13 @@ pre .javascript .function {
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #65c2eb;
+  background: #1741a3;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1338,34 +1342,6 @@ pre .javascript .function {
 }
 .post-toc .nav .active-current > a:hover {
   color: #fc6423;
-}
-.site-state {
-  display: flex;
-  justify-content: center;
-  line-height: 1.4;
-  margin-top: 10px;
-  overflow: hidden;
-  text-align: center;
-  white-space: nowrap;
-}
-.site-state-item {
-  padding: 0 15px;
-}
-.site-state-item:not(:first-child) {
-  border-left: 1px solid #eee;
-}
-.site-state-item a {
-  border-bottom: none;
-}
-.site-state-item-count {
-  display: block;
-  font-size: 1em;
-  font-weight: 600;
-  text-align: center;
-}
-.site-state-item-name {
-  color: #999;
-  font-size: 0.8125em;
 }
 .footer {
   color: #999;
@@ -2479,8 +2455,7 @@ ul.breadcrumb li + li:last-child {
 }
 body {
   background: url("/images/background.jpg");
-  background-size: cover; /* 图片铺满整个背景 */
-  background-position: center; /* 图片居中 */
-  background-repeat: no-repeat; /* 不重复 */
-  background-attachment: fixed; /* 背景固定，不随滚动移动 */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
