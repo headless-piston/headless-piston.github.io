@@ -1,3 +1,8 @@
+header {
+    background-image: url('/img/background1.webp');
+    background-size: cover;
+    background-position: center;
+}
 .inline-image-text {
   display: inline-flex;
   align-items: center; /* 垂直居中 */
