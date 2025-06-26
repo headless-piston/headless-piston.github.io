@@ -1,0 +1,11 @@
+.inline-image-text {
+  display: inline-flex;
+  align-items: center; /* 垂直居中 */
+  font-size: 30px;
+}
+.inline-image-text img {
+  width: 100px;
+  height: 100px;
+  margin-right: 50px; /* 图片与文字间距 */
+  vertical-align: middle; /* 确保对齐 */
+}
