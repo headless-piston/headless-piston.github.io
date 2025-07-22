@@ -2523,14 +2523,16 @@ code
 是一个度数 <span class="math inline">\(\sqrt{n}\)</span>，只有三层的树。
 ——lxl<br />
 由于可以暴力操作且具有简单的结构，它有着比树形数据结构更为灵活的优势。同时，它还具有常数小的优势。</p>
-<p>习题： - <a
-href="https://www.luogu.com.cn/problem/P3372">【模板】线段树
-1</a>，跑的比递归式线段树快。<br />
-- <a
+<p>习题：</p>
+<ul>
+<li><p><a href="https://www.luogu.com.cn/problem/P3372">【模板】线段树
+1</a>，跑的比递归式线段树快。</p></li>
+<li><p><a
 href="https://www.luogu.com.cn/problem/P2801">教主的魔法</a>，分块+二分答案，单次查询复杂度
-<span class="math inline">\(O(\sqrt{n}\log n)\)</span>。<br />
-- <a href="https://www.luogu.com.cn/problem/P5356">[Ynoi Easy Round
-2017] 由乃打扑克</a>，分块+二分答案+二分查找。</p>
+<span class="math inline">\(O(\sqrt{n}\log n)\)</span>。</p></li>
+<li><p><a href="https://www.luogu.com.cn/problem/P5356">[Ynoi Easy Round
+2017] 由乃打扑克</a>，分块+二分答案+二分查找。</p></li>
+</ul>
 <h3 id="莫队">莫队</h3>
 <p>很神的技巧。对于一些题目，如果所求的东西难以用常规数据结构维护且可以离线，那就可以尝试莫队。我们可以来看模板题
 <a href="https://www.luogu.com.cn/problem/P1494">[国家集训队] 小 Z
@@ -2574,13 +2576,20 @@ class="math inline">\(O(n\sqrt{m})\)</span>。<br />
 <h4 id="莫队值域分块">莫队+值域分块</h4>
 <p>值域分块 <span class="math inline">\(O(1)\)</span>
 单点修改的特性很适合莫队。<br />
-习题： - <a href="https://www.luogu.com.cn/problem/P4396">[AHOI2013]
-作业</a> - <a
-href="https://www.luogu.com.cn/problem/P12598">参数要吉祥</a></p>
+习题：</p>
+<ul>
+<li><p><a href="https://www.luogu.com.cn/problem/P4396">[AHOI2013]
+作业</a></p></li>
+<li><p><a
+href="https://www.luogu.com.cn/problem/P12598">参数要吉祥</a></p></li>
+</ul>
 <h4 id="莫队bitset">莫队+bitset</h4>
 <p>和值域分块类似，但是更好写一些。<br />
-习题： - <a href="https://www.luogu.com.cn/problem/P4137">Rmq Problem /
-mex</a></p>
+习题：</p>
+<ul>
+<li><a href="https://www.luogu.com.cn/problem/P4137">Rmq Problem /
+mex</a></li>
+</ul>
 <h4 id="带修莫队">带修莫队</h4>
 <p>模板题 <a href="https://www.luogu.com.cn/problem/P1903">[国家集训队]
 数颜色 / 维护队列</a>。<br />
