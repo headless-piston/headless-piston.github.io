@@ -105,13 +105,16 @@ class="math inline">\(l,r\)</span> 之间的子串。<br />
 <code>#</code>
 等来把长度为偶数的串转化为长度为奇数的串。接下来，我们维护 <span
 class="math inline">\(p_i\)</span> 表示以 <span
-class="math inline">\(i\)</span> 为重心的回文半径，<span
+class="math inline">\(i\)</span> 为中心的回文半径，<span
 class="math inline">\(r\)</span>
 为当前找到的覆盖位置最靠右的回文串能覆盖到的最大下标，<span
 class="math inline">\(mid\)</span> 表示它的回文中心的下标。<br />
-计算过程考虑分类讨论： - <span class="math inline">\(i&gt;r\)</span>
-时，直接暴力一步步向后跳。 - <span class="math inline">\(i\le r\)</span>
-时，设 <span class="math inline">\(j\)</span> 为 <span
+计算过程考虑分类讨论：</p>
+<ul>
+<li><p><span class="math inline">\(i&gt;r\)</span>
+时，直接暴力一步步向后跳。</p></li>
+<li><p><span class="math inline">\(i\le r\)</span> 时，设 <span
+class="math inline">\(j\)</span> 为 <span
 class="math inline">\(i\)</span> 关于 <span
 class="math inline">\(mid\)</span> 的对称点，即 <span
 class="math inline">\(mid\times 2-i\)</span>。<br />
@@ -122,7 +125,9 @@ class="math inline">\(p_j\)</span> 的值。但这个推论成立当且仅当 <s
 class="math inline">\(i+p_j\le r\)</span>，否则 <span
 class="math inline">\(p_i\)</span> 只能取到 <span
 class="math inline">\(r-i+1\)</span>，然后再暴力扩展。<br />
-综上，<span class="math inline">\(p_i=\min(p_j,r-i+1)\)</span>。</p>
+综上，<span
+class="math inline">\(p_i=\min(p_j,r-i+1)\)</span>。</p></li>
+</ul>
 <p><span class="math inline">\(r\)</span> 只能向右移动，故最多移动 <span
 class="math inline">\(O(n)\)</span> 次。其余情况的计算显然是 <span
 class="math inline">\(O(1)\)</span> 的。</p>
