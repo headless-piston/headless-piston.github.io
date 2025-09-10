@@ -38,32 +38,6 @@ F(\omega_n^k)&=F_1((\omega_n^k)^2)+\omega_n^kF_2((\omega_n^k)^2)\\
       </tags>
   </entry>
   <entry>
-    <title>abc 题目合集</title>
-    <url>/2025/08/23/abc%20%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/</url>
-    <content><![CDATA[<h2 id="200"><a href="#200" class="headerlink" title="200"></a>200</h2><h3 id="D"><a href="#D" class="headerlink" title="D"></a>D</h3><p>考虑鸽巢原理：枚举 $201$ 种序列，必然存在两种方案之和模 $200$ 同余。当序列长度为 $8$ 时有 $2^8=256$ 种子序列，足以覆盖全部情况。直接 dfs，时间复杂度 $2^{\min(n,8)}$。  </p>
-<h3 id="E"><a href="#E" class="headerlink" title="E"></a>E</h3><p>拜谢 <a href="https://www.luogu.com.cn/article/xz0tapxl"><em>Kenma</em></a>。<br>容易想到枚举 $i+j+k$，接着再确定 $i,j,k$。<br>考虑容斥。设 $i+j+k=sum$，方案数为 $f<em>{sum}$，若忽略 $i,j,k\le n$ 的限制，则 $f</em>{sum}=\dbinom{sum-1}{2}$。此时对限制容斥一下：  </p>
-<script type="math/tex; mode=display">f_{sum}=\binom{sum-1}{2}-3\cdot\binom{sum-n-1}{2}+3\cdot\binom{sum-2n-1}{2}-\binom{sum-3n-1}{2}</script><p>确定 $i+j+k$ 后枚举 $i$，计算相同 $i$ 下合法三元组数量即可。  </p>
-<h2 id="201"><a href="#201" class="headerlink" title="201"></a>201</h2><h3 id="D-1"><a href="#D-1" class="headerlink" title="D"></a>D</h3><p>比较基础的博弈 DP。  </p>
-<h3 id="E-1"><a href="#E-1" class="headerlink" title="E"></a>E</h3><p>看到树上路径异或和首先转化为点到根的路径异或和，因为设 $dis(u,v)$ 表示 $u,v$ 路径的异或和，有 $dis(u,v)=dis(1,u)\oplus dis(1,v)$。则现在问题转化为：有数组 $dis$，求其中元素两两异或的结果之和。考虑拆位，设当前考虑到第 $i$ 位，所有 $dis$ 中第 $i$ 位为 $1$ 的有 $cnt$ 个，这一位的贡献即为 $cnt\times (n-cnt)\times 2^i$。时间复杂度 $O(n\log V)$。  </p>
-<h2 id="202"><a href="#202" class="headerlink" title="202"></a>202</h2><h3 id="E-2"><a href="#E-2" class="headerlink" title="E"></a>E</h3><p>比较套路的题。一些带 $\log$ 的方法比较高级，这里给出一个 <em>Kenma</em> 的朴素 $O(n)$ 做法。<br>只需要开桶，进入子树前减去原本的贡献即可。  </p>
-<h2 id="212"><a href="#212" class="headerlink" title="212"></a>212</h2><h3 id="E-3"><a href="#E-3" class="headerlink" title="E"></a>E</h3><p>挺不错的题。考虑 DP，设 $f<em>{i,j}$ 表示前 $i$ 天，最终停留在 $j$ 点的方案数。答案即为 $f</em>{k,0}$，边界 $f<em>{0,1}=1$。转移的话可以考虑容斥：设 $sum=\sum_j f</em>{i-1,j}$，则有  </p>
-<script type="math/tex; mode=display">f_{i,u}=sum-f_{i-1,u}-\sum_{v\in e_u}f_{i-1,v}</script><h2 id="214"><a href="#214" class="headerlink" title="214"></a>214</h2><h3 id="E-4"><a href="#E-4" class="headerlink" title="E"></a>E</h3><p>一种比较简单的做法。贪心，首先以 $r​$ 为第一关键字，$l​$ 为第二关键字升序排序，使用并查集检查每个 $l​$ 向后第一个可用的位置。设其为 $p​$，若 $p&gt;r​$ 则无解。值域问题使用 <code>std::map</code> 动态开点即可。  </p>
-<h3 id="F"><a href="#F" class="headerlink" title="F"></a>F</h3><p>简单计数 DP。设 $f_{i,j}$ 表示考虑前 $i$ 个字符，最后一个字符为 $j$ 的不同新字符串数量。则有转移：  </p>
-<script type="math/tex; mode=display">f_{i,j}=\begin{cases}f_{i-1,j}&j\ne s_i\\1+\sum_{k} f_{i-2,k}&j=s_i\end{cases}​</script><h2 id="215"><a href="#215" class="headerlink" title="215"></a>215</h2><h3 id="F-1"><a href="#F-1" class="headerlink" title="F"></a>F</h3><p>看到最大化最小值容易想到二分答案。设枚举的答案是 $d$，check 考虑双指针，首先将点按照 $x$ 排序，则可以框出一段左右界之差小于 $d$ 的区域，只需在两端取点即可保证 $|x_i-x_j|\ge d$，那么，在两边取最大最小的 $y_i,y_j$，相减后检查与 $d$ 的关系即可。预处理前后缀 $\min,\max$ 可以做到时间复杂度 $O(n\log V)$。  </p>
-<h2 id="359"><a href="#359" class="headerlink" title="359"></a>359</h2><h3 id="E-5"><a href="#E-5" class="headerlink" title="E"></a>E</h3><p>设第 $i​$ 个水箱的答案为 $f_i​$。<br>考虑分为两种水箱：  </p>
-<ul>
-<li><p>是当前最高的，答案为 $i\times h_i+1​$；  </p>
-</li>
-<li><p>不是当前最高的，设上一个比它高的位置是 $j$，答案为 $f_j+(i-j)\times h_i$。  </p>
-</li>
-</ul>
-<p>单调栈维护即可。  </p>
-]]></content>
-      <tags>
-        <tag>题目合集</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>AC 自动机</title>
     <url>/2025/06/23/AC%20%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近集训时将难一些的字符串题时发现自己似乎已经忘了，或者就根本没学懂过 AC 自动机，于是重学一遍。  </p>
@@ -1527,5 +1501,109 @@ b_{n}'
 <h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>成员函数 <code>abs()</code>，以 <code>bigint</code> 类型返回该数的绝对值。<br>私有函数 <code>left_shift(const int &amp;k)</code> 和 <code>right_shift(const int &amp;k)</code>，用于在十进制下对数进行左/右移，等价于乘 $10000^k$ 或除 $10000^k$ 并向零取整，时间复杂度 $O(n)$。  </p>
 <h3 id="Upd"><a href="#Upd" class="headerlink" title="Upd"></a>Upd</h3><p>v1.1：增加了 NTT 命名空间，但因为一些原因暂不使用。<br>v1.2：改了改码风。<br>v1.3：使用 C++ 标准库中的 <code>std::complex</code> 代替手写的复数类。修复了初始化错误的问题。<br>v1.4：<code>std::complex</code> 跑的太慢啦，换回手写的复数类。<br>v1.5：改用预处理单位根计算，提高了精度。现在可以压 $4$ 位啦，效率大提升！<br>v1.6：整体重构代码，现在支持动态内存。同时大幅提升了安全性和性能，增加了非法输入的检查，高精度乘法在洛谷模板题成功进入 $1\operatorname{s}$，现在处于最优解第 5 页。<br>v1.7：完善了 v1.6 的代码，修复了前导零删除的问题。由于时间和精力有限，仅实现了 $O(n^2\log n)$ 的除法和取模。  </p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>ABC 题目合集</title>
+    <url>/2025/08/23/ABC%20%E9%A2%98%E7%9B%AE%E5%90%88%E9%9B%86/</url>
+    <content><![CDATA[<h2 id="section">200</h2>
+<h3 id="d">D</h3>
+<p>考虑鸽巢原理：枚举 <span class="math inline">\(201\)</span>
+种序列，必然存在两种方案之和模 <span class="math inline">\(200\)</span>
+同余。当序列长度为 <span class="math inline">\(8\)</span> 时有 <span
+class="math inline">\(2^8=256\)</span> 种子序列，足以覆盖全部情况。直接
+dfs，时间复杂度 <span class="math inline">\(2^{\min(n,8)}\)</span>。</p>
+<h3 id="e">E</h3>
+<p>拜谢 <a
+href="https://www.luogu.com.cn/article/xz0tapxl"><em>Kenma</em></a>。<br />
+容易想到枚举 <span class="math inline">\(i+j+k\)</span>，接着再确定
+<span class="math inline">\(i,j,k\)</span>。<br />
+考虑容斥。设 <span class="math inline">\(i+j+k=sum\)</span>，方案数为
+<span class="math inline">\(f_{sum}\)</span>，若忽略 <span
+class="math inline">\(i,j,k\le n\)</span> 的限制，则 <span
+class="math inline">\(f_{sum}=\dbinom{sum-1}{2}\)</span>。此时对限制容斥一下：<br />
+<span
+class="math display">\[f_{sum}=\binom{sum-1}{2}-3\cdot\binom{sum-n-1}{2}+3\cdot\binom{sum-2n-1}{2}-\binom{sum-3n-1}{2}\]</span>
+确定 <span class="math inline">\(i+j+k\)</span> 后枚举 <span
+class="math inline">\(i\)</span>，计算相同 <span
+class="math inline">\(i\)</span> 下合法三元组数量即可。</p>
+<h2 id="section-1">201</h2>
+<h3 id="d-1">D</h3>
+<p>比较基础的博弈 DP。</p>
+<h3 id="e-1">E</h3>
+<p>看到树上路径异或和首先转化为点到根的路径异或和，因为设 <span
+class="math inline">\(dis(u,v)\)</span> 表示 <span
+class="math inline">\(u,v\)</span> 路径的异或和，有 <span
+class="math inline">\(dis(u,v)=dis(1,u)\oplus
+dis(1,v)\)</span>。则现在问题转化为：有数组 <span
+class="math inline">\(dis\)</span>，求其中元素两两异或的结果之和。考虑拆位，设当前考虑到第
+<span class="math inline">\(i\)</span> 位，所有 <span
+class="math inline">\(dis\)</span> 中第 <span
+class="math inline">\(i\)</span> 位为 <span
+class="math inline">\(1\)</span> 的有 <span
+class="math inline">\(cnt\)</span> 个，这一位的贡献即为 <span
+class="math inline">\(cnt\times (n-cnt)\times 2^i\)</span>。时间复杂度
+<span class="math inline">\(O(n\log V)\)</span>。</p>
+<h2 id="section-2">202</h2>
+<h3 id="e-2">E</h3>
+<p>比较套路的题。一些带 <span class="math inline">\(\log\)</span>
+的方法比较高级，这里给出一个 <em>Kenma</em> 的朴素 <span
+class="math inline">\(O(n)\)</span> 做法。<br />
+只需要开桶，进入子树前减去原本的贡献即可。</p>
+<h2 id="section-3">212</h2>
+<h3 id="e-3">E</h3>
+<p>挺不错的题。考虑 DP，设 <span class="math inline">\(f_{i,j}\)</span>
+表示前 <span class="math inline">\(i\)</span> 天，最终停留在 <span
+class="math inline">\(j\)</span> 点的方案数。答案即为 <span
+class="math inline">\(f_{k,0}\)</span>，边界 <span
+class="math inline">\(f_{0,1}=1\)</span>。转移的话可以考虑容斥：设 <span
+class="math inline">\(sum=\sum_j f_{i-1,j}\)</span>，则有<br />
+<span class="math display">\[f_{i,u}=sum-f_{i-1,u}-\sum_{v\in
+e_u}f_{i-1,v}\]</span></p>
+<h2 id="section-4">214</h2>
+<h3 id="e-4">E</h3>
+<p>一种比较简单的做法。贪心，首先以 <span
+class="math inline">\(r​\)</span> 为第一关键字，<span
+class="math inline">\(l​\)</span>
+为第二关键字升序排序，使用并查集检查每个 <span
+class="math inline">\(l​\)</span> 向后第一个可用的位置。设其为 <span
+class="math inline">\(p​\)</span>，若 <span
+class="math inline">\(p&gt;r​\)</span> 则无解。值域问题使用
+<code>std::map</code> 动态开点即可。</p>
+<h3 id="f">F</h3>
+<p>简单计数 DP。设 <span class="math inline">\(f_{i,j}\)</span>
+表示考虑前 <span class="math inline">\(i\)</span> 个字符，最后一个字符为
+<span class="math inline">\(j\)</span>
+的不同新字符串数量。则有转移：</p>
+<p><span class="math display">\[f_{i,j}=\begin{cases}f_{i-1,j}&amp;j\ne
+s_i\\1+\sum_{k} f_{i-2,k}&amp;j=s_i\end{cases}​\]</span></p>
+<h2 id="section-5">215</h2>
+<h3 id="f-1">F</h3>
+<p>看到最大化最小值容易想到二分答案。设枚举的答案是 <span
+class="math inline">\(d\)</span>，check 考虑双指针，首先将点按照 <span
+class="math inline">\(x\)</span> 排序，则可以框出一段左右界之差小于
+<span class="math inline">\(d\)</span> 的区域，只需在两端取点即可保证
+<span class="math inline">\(|x_i-x_j|\ge
+d\)</span>，那么，在两边取最大最小的 <span
+class="math inline">\(y_i,y_j\)</span>，相减后检查与 <span
+class="math inline">\(d\)</span> 的关系即可。预处理前后缀 <span
+class="math inline">\(\min,\max\)</span> 可以做到时间复杂度 <span
+class="math inline">\(O(n\log V)\)</span>。</p>
+<h2 id="section-6">359</h2>
+<h3 id="e-5">E</h3>
+<p>设第 <span class="math inline">\(i​\)</span> 个水箱的答案为 <span
+class="math inline">\(f_i​\)</span>。<br />
+考虑分为两种水箱：</p>
+<ul>
+<li><p>是当前最高的，答案为 <span class="math inline">\(i\times
+h_i+1​\)</span>；</p></li>
+<li><p>不是当前最高的，设上一个比它高的位置是 <span
+class="math inline">\(j\)</span>，答案为 <span
+class="math inline">\(f_j+(i-j)\times h_i\)</span>。</p></li>
+</ul>
+<p>单调栈维护即可。</p>
+]]></content>
+      <tags>
+        <tag>题目合集</tag>
+      </tags>
   </entry>
 </search>
